@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 import "./ProfilePage.css";
 
 export default function EditProfilePage() {
-
-    const navigate = useNavigate();
 
     const [form, setForm] = useState({
         full_name:"",

@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
-import { useNavigate } from "react-router-dom";
 import "./UserDashboard.css";
 
 export default function UserDashboard() {
   const [profile, setProfile] = useState(null);
   const [results, setResults] = useState([]);
-  const navigate = useNavigate();
-
+  
   useEffect(() => {
   const fetchData = async () => {
     try {
