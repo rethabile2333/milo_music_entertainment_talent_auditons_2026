@@ -5,7 +5,6 @@ import "./UserDashboard.css";
 
 export default function UserDashboard() {
   const [profile, setProfile] = useState(null);
-  const [results, setResults] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
