@@ -26,9 +26,9 @@ export default function AboutPage() {
 
         <h3>Event Details</h3>
         <ul>
-          <li><strong>Date:</strong> 8th August 2026</li>
-          <li><strong>Venue:</strong> Global Guesthouse, Naleli, Maseru 100, Lesotho</li>
-          <li><strong>Time:</strong> 11:00 AM – 2:00 PM</li>
+          <li><strong>Date:</strong> 08th August 2026</li>
+          <li><strong>Venue:</strong> Global Guesthouse</li>
+          <li><strong>Time:</strong> 8:00 AM – 5:00 PM</li>
         </ul>
 
         <h3>Why Audition?</h3>
@@ -49,7 +49,7 @@ export default function AboutPage() {
 
         <h3>Registration</h3>
         <p>
-          To register, send a WhatsApp message to <strong>+266 5388 2100</strong> or <strong>+266 6262 0909</strong> 
+          To register, send a WhatsApp message to <strong>+266 5388 2100 </strong> or <strong>+266 6262 0909 </strong> 
           with the subject <em>“MILO AUDITION”</em>. Walk-ins are welcome, but registration is preferred.
           If you’re under 18, please bring a parent or guardian.
         </p>
