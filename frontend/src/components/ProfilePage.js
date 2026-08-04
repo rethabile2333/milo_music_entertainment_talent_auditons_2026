@@ -53,8 +53,8 @@ export default function ProfilePage() {
         </div>
 
         <nav className="nav">
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
+          <a href="/results">Results</a>
+                    <a href="/feedback">Feedback</a>
           <Link to="/profilepage">My Profile</Link>
           <Link to="/login">Logout</Link>
         </nav>

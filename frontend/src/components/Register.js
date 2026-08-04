@@ -1,41 +1,55 @@
 import { useState } from "react";
 import api from "../services/api";
-import "./Register.css"; // import the CSS file
+import "./Register.css";
 
 export default function Register() {
   const [form, setForm] = useState({
     full_name: "",
     email: "",
     password: "",
-    role: "artist",
+    role: "Artist", // Must match the option value exactly
     genre: "",
-    instrument: "",
+    instrument_type: "",
     dance_style: "",
-    height: "" ,// add height so it's tracked properly
- judge_category: ""
+    model_type: "",
+    judge_category: "",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await api.post("/auth/register", form);
-    alert("Registered successfully!");
+
+    try {
+      await api.post("/auth/register", form);
+      alert("Registered successfully!");
+    } catch (err) {
+      alert(err.response?.data?.error || "Registration failed");
+    }
   };
 
   return (
     <div className="register-page">
       <div className="register-box">
-        {/* Logo + Title */}
+
         <div className="logo-section">
           <img src="/logo.jpeg" alt="Milo Logo" className="register-logo" />
-          <h2 className="register-title">Register for Milo Music Entertainment <br /> Talent Auditions 2026</h2>
+          <h2 className="register-title">
+            Register for Milo Music Entertainment
+            <br />
+            Talent Auditions 2026
+          </h2>
         </div>
 
         <form onSubmit={handleSubmit}>
+
           <div className="form-group">
             <label>Full Name</label>
             <input
+              type="text"
               placeholder="Enter your full name"
-              onChange={(e) => setForm({ ...form, full_name: e.target.value })}
+              value={form.full_name}
+              onChange={(e) =>
+                setForm({ ...form, full_name: e.target.value })
+              }
             />
           </div>
 
@@ -44,7 +58,10 @@ export default function Register() {
             <input
               type="email"
               placeholder="Enter your email"
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              value={form.email}
+              onChange={(e) =>
+                setForm({ ...form, email: e.target.value })
+              }
             />
           </div>
 
@@ -53,15 +70,28 @@ export default function Register() {
             <input
               type="password"
               placeholder="Enter your password"
-              onChange={(e) => setForm({ ...form, password: e.target.value })}
+              value={form.password}
+              onChange={(e) =>
+                setForm({ ...form, password: e.target.value })
+              }
             />
           </div>
 
           <div className="form-group">
             <label>Role</label>
             <select
-              onChange={(e) => setForm({ ...form, role: e.target.value })}
               value={form.role}
+              onChange={(e) =>
+                setForm({
+                  ...form,
+                  role: e.target.value,
+                  genre: "",
+                  model_type: "",
+                  instrument_type: "",
+                  dance_style: "",
+                  judge_category: "",
+                })
+              }
             >
               <option value="Artist">Artist</option>
               <option value="Model">Model</option>
@@ -72,62 +102,94 @@ export default function Register() {
             </select>
           </div>
 
-          {/* Conditional fields */}
+          {/* Artist */}
           {form.role === "Artist" && (
             <div className="form-group">
               <label>Genre</label>
               <input
+                type="text"
                 placeholder="Enter your genre"
-                onChange={(e) => setForm({ ...form, genre: e.target.value })}
+                value={form.genre}
+                onChange={(e) =>
+                  setForm({ ...form, genre: e.target.value })
+                }
               />
             </div>
           )}
+
+          {/* Model */}
           {form.role === "Model" && (
             <div className="form-group">
-              <label>Height</label>
+              <label>Model Type</label>
               <input
-                placeholder="Height (e.g., 175cm)"
-                onChange={(e) => setForm({ ...form, height: e.target.value })}
+                type="text"
+                placeholder="Fashion, Commercial, Runway..."
+                value={form.model_type}
+                onChange={(e) =>
+                  setForm({ ...form, model_type: e.target.value })
+                }
               />
             </div>
           )}
+
+          {/* Instrumentalist */}
           {form.role === "Instrumentalist" && (
             <div className="form-group">
               <label>Instrument Type</label>
               <input
+                type="text"
                 placeholder="Enter your instrument"
-                onChange={(e) => setForm({ ...form, instrument: e.target.value })}
+                value={form.instrument_type}
+                onChange={(e) =>
+                  setForm({ ...form, instrument_type: e.target.value })
+                }
               />
             </div>
           )}
+
+          {/* Traditional Dancer */}
           {form.role === "Traditional Dancer" && (
             <div className="form-group">
               <label>Dance Style</label>
               <input
+                type="text"
                 placeholder="Enter your dance style"
-                onChange={(e) => setForm({ ...form, dance_style: e.target.value })}
+                value={form.dance_style}
+                onChange={(e) =>
+                  setForm({ ...form, dance_style: e.target.value })
+                }
               />
             </div>
           )}
-          
+
+          {/* Judge */}
           {form.role === "Judge" && (
-  <div className="form-group">
-    <label>Judge Category</label>
-    <select
-      value={form.judge_category}
-      onChange={(e) =>
-        setForm({ ...form, judge_category: e.target.value })
-      }
-    >
-      <option value="">Select Category</option>
-      <option value="Artist">Artist</option>
-      <option value="Model">Model</option>
-      <option value="Instrumentalist">Instrumentalist</option>
-      <option value="Traditional Dancer">Traditional Dancer</option>
-    </select>
-  </div>
-)}
-          <button type="submit" className="register-btn">Register</button>
+            <div className="form-group">
+              <label>Judge Category</label>
+              <select
+                value={form.judge_category}
+                onChange={(e) =>
+                  setForm({
+                    ...form,
+                    judge_category: e.target.value,
+                  })
+                }
+              >
+                <option value="">Select Category</option>
+                <option value="Artist">Artist</option>
+                <option value="Model">Model</option>
+                <option value="Instrumentalist">Instrumentalist</option>
+                <option value="Traditional Dancer">
+                  Traditional Dancer
+                </option>
+              </select>
+            </div>
+          )}
+
+          <button type="submit" className="register-btn">
+            Register
+          </button>
+
         </form>
       </div>
     </div>

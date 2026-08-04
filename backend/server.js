@@ -20,9 +20,9 @@ app.post("/auth/register", async (req, res) => {
     password,
     role,
     genre,
-    instrument,
+    instrument_type,
     dance_style,
-    height,
+    model_type,
     judge_category,
   } = req.body;
 
@@ -46,7 +46,7 @@ app.post("/auth/register", async (req, res) => {
     // Register Contestant/Admin
     await db.query(
       `INSERT INTO users
-      (full_name, email, password_hash, role, genre, instrument, dance_style, height)
+      (full_name, email, password_hash, role, genre, instrument_type, dance_style, model_type)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         full_name,
@@ -54,9 +54,9 @@ app.post("/auth/register", async (req, res) => {
         hash,
         role,
         genre || null,
-        instrument || null,
+        instrument_type || null,
         dance_style || null,
-        height || null,
+        model_type || null,
       ]
     );
 

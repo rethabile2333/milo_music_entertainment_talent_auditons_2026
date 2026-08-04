@@ -46,7 +46,6 @@ export default function FeedbackPage() {
                 </div>
 
                 <nav className="nav">
-                    <a href="/dashboard">Dashboard</a>
                     <a href="/profilepage">My Profile</a>
                     <a href="/results">Results</a>
                     <a href="/feedback">Feedback</a>

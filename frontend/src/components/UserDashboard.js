@@ -45,12 +45,10 @@ export default function UserDashboard() {
         </div>
 
         <nav className="nav">
-          <a href="/dashboard">Dashboard</a>
           <a href="/profilepage">My Profile</a>
-          <a href="/applications">My Applications</a>
           <a href="/results">Results</a>
           <a href="/feedback">Feedback</a>
-          <a href="/schedule">Schedule</a>
+        
 
           <button
             className="logout-btn"
