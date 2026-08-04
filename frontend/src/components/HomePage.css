@@ -1,0 +1,101 @@
+.homepage {
+  font-family: Arial, sans-serif;
+}
+
+/* Header styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  padding: 10px 20px;
+  color: white;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 40px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.site-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav a {
+  margin-left: 15px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+/* Welcome message above the picture */
+.welcome-text {
+  text-align: center;
+  margin: 30px 0 10px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #111;
+}
+
+/* Banner with small centered picture */
+.banner {
+  position: relative;
+  text-align: center;
+  margin: 20px auto;
+  width: 630px;   /* fixed width for smaller size */
+  height: auto;
+}
+
+.banner-img {
+  width: 110%;
+  height: 400px; /* fixed height for smaller size */
+  display: block;
+  text-align: center;
+  border-radius: 8px; /* optional rounded corners */
+}
+
+/* Overlay content on top of the picture */
+.banner-overlay {
+  position: absolute;
+  top: 50%;              /* center vertically */
+  left: 50%;             /* center horizontally */
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  font-family: "Georgia", serif;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+.banner-overlay p {
+  margin-bottom: 20px;
+}
+
+.cta-btn {
+  background: #ffcc00;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  font-family: "Georgia", serif;
+}
+
+.cta-btn:hover {
+  background: #e6b800;
+}
+

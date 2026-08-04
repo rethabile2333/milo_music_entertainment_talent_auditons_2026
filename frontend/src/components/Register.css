@@ -1,0 +1,85 @@
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f0f2f5;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.register-box {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  width: 360px;
+  text-align: center;
+}
+
+.logo-section {
+  margin-bottom: 20px;
+}
+
+.register-logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.register-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #111;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+/* Yellow underline accent */
+.register-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #ffcc00;
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+.form-group {
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.register-btn {
+  width: 100%;
+  background: #0056a3;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.register-btn:hover {
+  background: #003f7d;
+}

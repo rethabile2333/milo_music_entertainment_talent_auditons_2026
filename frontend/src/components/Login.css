@@ -1,0 +1,84 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f0f2f5; /* light background */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-box {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  width: 360px;
+  text-align: center;
+}
+
+.logo-section {
+  margin-bottom: 20px;
+}
+
+.login-logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.login-box h2 {
+  font-size: 21px;
+  font-weight: bold;
+  color: #111;
+  margin-bottom: 25px;
+}
+
+
+/* Yellow line under the heading */
+.login-box h2::after {
+  content: "";
+  display: block;
+  width: 60px;          /* line length */
+  height: 4px;          /* line thickness */
+  background: #ffcc00;  /* Milo yellow accent */
+  margin: 8px auto 0;   /* spacing + center */
+  border-radius: 2px;   /* rounded edges */
+}
+
+.form-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.login-btn {
+  width: 100%;
+  background: #0056a3; /* Milo blue accent */
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-btn:hover {
+  background: #003f7d;
+}

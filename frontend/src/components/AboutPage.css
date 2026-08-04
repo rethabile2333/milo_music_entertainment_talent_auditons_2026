@@ -1,0 +1,84 @@
+.about-page {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9f9f9;
+  padding: 20px;
+  color: #333;
+}
+
+/* Main content container */
+.about-content {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  line-height: 1.7;
+}
+
+/* Page title */
+.about-content h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 34px;
+  font-weight: bold;
+  color: #111;
+  letter-spacing: 1px;
+  border-bottom: 3px solid #ffcc00;
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+/* Section headings */
+.about-content h3 {
+  margin-top: 30px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #0056a3; /* Milo blue accent */
+}
+
+/* Paragraphs */
+.about-content p {
+  font-size: 16px;
+  margin-bottom: 18px;
+  color: #444;
+}
+
+/* Lists */
+.about-content ul {
+  margin: 15px 0 25px;
+  padding-left: 25px;
+}
+
+.about-content li {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Highlighted details */
+.about-content strong {
+  color: #111;
+  font-weight: bold;
+}
+
+/* Registration emphasis */
+.about-content em {
+  color: #d35400;
+  font-style: normal;
+  font-weight: bold;
+}
+
+/* Add a subtle banner effect */
+.about-banner {
+  background: linear-gradient(to right, #0056a3, #ffcc00);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
