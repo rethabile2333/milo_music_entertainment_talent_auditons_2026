@@ -10,13 +10,7 @@ const userRoutes = require("./routes/user");
 const app = express();
 
 // ================= CORS =================
-app.use(cors({
-  origin: [
-    "https://milo-music-entertainment-talent-aud-mu.vercel.app",
-    "https://milo-music-entertainment-talent-auditons-2026-21yu-coh9uglr4.vercel.app"
-  ],
-  credentials: true,
-}));
+app.use(cors());
 
 app.use(express.json());
 
