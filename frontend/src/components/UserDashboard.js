@@ -93,11 +93,6 @@ export default function UserDashboard() {
           </div>
 
           <div className="info-row">
-            <span>Category</span>
-            <strong>{profile?.category || "Singing"}</strong>
-          </div>
-
-          <div className="info-row">
             <span>Status</span>
             <strong className="scheduled">Scheduled</strong>
           </div>
