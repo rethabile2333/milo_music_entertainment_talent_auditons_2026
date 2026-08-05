@@ -9,14 +9,18 @@ const userRoutes = require("./routes/user");
 
 const app = express();
 
+// ================= CORS =================
 app.use(cors({
   origin: [
-    "https://milo-music-entertainment-talent-aud-mu.vercel.app/"
+    "https://milo-music-entertainment-talent-aud-mu.vercel.app",
+    "https://milo-music-entertainment-talent-auditons-2026-21yu-coh9uglr4.vercel.app"
   ],
   credentials: true,
 }));
+
 app.use(express.json());
 
+// ================= ROUTES =================
 app.use("/user", userRoutes);
 
 // ================= REGISTER =================
@@ -50,7 +54,7 @@ app.post("/auth/register", async (req, res) => {
       });
     }
 
-    // Register Contestant/Admin
+    // Register User/Admin
     await db.query(
       `INSERT INTO users
       (full_name, email, password_hash, role, genre, instrument_type, dance_style, model_type)
@@ -72,7 +76,7 @@ app.post("/auth/register", async (req, res) => {
     });
 
   } catch (err) {
-    console.error(err);
+    console.error("REGISTER ERROR:", err);
     res.status(500).json({
       error: err.message,
     });
@@ -84,7 +88,6 @@ app.post("/auth/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
-
     // Check users table
     let [rows] = await db.query(
       "SELECT * FROM users WHERE email = ?",
@@ -110,7 +113,7 @@ app.post("/auth/login", async (req, res) => {
           id: user.user_id,
           role: user.role,
         },
-        "secretkey",
+        process.env.JWT_SECRET,
         {
           expiresIn: "1d",
         }
@@ -153,7 +156,7 @@ app.post("/auth/login", async (req, res) => {
         role: "Judge",
         judge_category: judge.judge_category,
       },
-      "secretkey",
+      process.env.JWT_SECRET,
       {
         expiresIn: "1d",
       }
@@ -171,13 +174,19 @@ app.post("/auth/login", async (req, res) => {
     });
 
   } catch (err) {
-    console.error(err);
+    console.error("LOGIN ERROR:", err);
     res.status(500).json({
       error: err.message,
     });
   }
 });
 
+// ================= HEALTH CHECK =================
+app.get("/", (req, res) => {
+  res.send("Backend is running.");
+});
+
+// ================= START SERVER =================
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
