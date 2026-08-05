@@ -82,3 +82,71 @@
   letter-spacing: 1px;
 }
 
+/* ===========================
+   Responsive Design
+=========================== */
+
+@media (max-width: 768px) {
+
+  .about-page {
+    padding: 10px;
+  }
+
+  .about-content {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .about-content h2 {
+    font-size: 28px;
+    display: block;
+    text-align: center;
+  }
+
+  .about-content h3 {
+    font-size: 20px;
+  }
+
+  .about-content p,
+  .about-content li {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .about-content ul {
+    padding-left: 20px;
+  }
+
+  .about-banner {
+    font-size: 18px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .about-content {
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .about-content h2 {
+    font-size: 24px;
+  }
+
+  .about-content h3 {
+    font-size: 18px;
+  }
+
+  .about-content p,
+  .about-content li {
+    font-size: 14px;
+  }
+
+  .about-banner {
+    font-size: 16px;
+    padding: 12px;
+  }
+}

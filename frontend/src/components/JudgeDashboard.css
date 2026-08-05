@@ -131,3 +131,147 @@ td{
 ul{
     line-height:2;
 }
+
+/* ===========================
+   Responsive Design
+=========================== */
+
+/* Tablets */
+@media (max-width: 992px) {
+
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+        margin: 20px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        margin: 20px;
+    }
+
+    .welcome {
+        padding: 20px;
+    }
+}
+
+/* Phones */
+@media (max-width: 768px) {
+
+    .header {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .logo-area {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .site-title {
+        font-size: 22px;
+    }
+
+    .nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .nav-btn,
+    .logout-btn {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .welcome {
+        padding: 15px;
+        text-align: center;
+    }
+
+    .welcome h1 {
+        font-size: 24px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        margin: 15px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .card span {
+        font-size: 28px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        margin: 15px;
+        gap: 15px;
+    }
+
+    .box {
+        padding: 15px;
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 600px;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .evaluate-btn {
+        width: 100%;
+    }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+
+    .site-title {
+        font-size: 18px;
+    }
+
+    .welcome h1 {
+        font-size: 20px;
+    }
+
+    .card span {
+        font-size: 24px;
+    }
+
+    th,
+    td {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .nav-btn,
+    .logout-btn {
+        font-size: 14px;
+    }
+}

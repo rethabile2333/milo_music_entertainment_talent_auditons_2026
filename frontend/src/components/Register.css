@@ -83,3 +83,24 @@
 .register-btn:hover {
   background: #003f7d;
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+
+  .register-box {
+    width: 90%;
+    padding: 25px;
+  }
+
+  .register-logo {
+    width: 120px;
+  }
+
+  .register-title {
+    font-size: 21px;
+  }
+
+  .register-btn {
+    font-size: 15px;
+  }
+}

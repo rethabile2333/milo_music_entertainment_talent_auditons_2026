@@ -82,3 +82,45 @@
 .login-btn:hover {
   background: #003f7d;
 }
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    width: 500px;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.login-logo {
+    width: 180px;
+}
+
+/* Keep all your existing CSS above */
+
+/* ===========================
+   Responsive Design
+=========================== */
+
+@media (max-width: 768px) {
+
+  .login-box {
+    width: 90%;
+    padding: 25px;
+  }
+
+  .login-logo {
+    width: 120px;
+  }
+
+  .login-box h2 {
+    font-size: 21px;
+  }
+
+  .login-btn {
+    font-size: 15px;
+  }
+}

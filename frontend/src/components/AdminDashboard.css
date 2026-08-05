@@ -61,3 +61,93 @@ td{
 ul{
     line-height:2;
 }
+
+/* ===========================
+   Responsive Design
+=========================== */
+
+@media (max-width: 992px) {
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+        margin: 20px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        margin: 20px;
+    }
+
+    .welcome {
+        padding: 20px;
+    }
+
+    .box {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .cards {
+        grid-template-columns: 1fr;
+        margin: 15px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        margin: 15px;
+        gap: 15px;
+    }
+
+    .welcome {
+        padding: 15px;
+        text-align: center;
+    }
+
+    .welcome h1 {
+        font-size: 26px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .card span {
+        font-size: 28px;
+    }
+
+    .box {
+        padding: 15px;
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 600px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .welcome h1 {
+        font-size: 22px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .card span {
+        font-size: 24px;
+    }
+
+    th,
+    td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    ul {
+        font-size: 14px;
+    }
+}

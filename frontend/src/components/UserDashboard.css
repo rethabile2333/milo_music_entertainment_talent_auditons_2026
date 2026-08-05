@@ -192,3 +192,57 @@
   color: #16a34a;
   font-weight: bold;
 }
+
+/* Responsive */
+@media(max-width:768px){
+
+
+.header {
+
+  flex-direction:column;
+  gap:15px;
+  padding:20px;
+
+}
+
+
+.site-title {
+
+  font-size:22px;
+
+}
+
+
+.nav {
+
+  flex-wrap:wrap;
+  justify-content:center;
+
+}
+
+
+.dashboard-content,
+.audition-card,
+.results-section {
+
+  width:90%;
+  padding:20px;
+
+}
+
+
+.audition-info {
+
+  grid-template-columns:1fr;
+
+}
+
+
+.welcome-section {
+
+  padding:25px 20px 5px;
+
+}
+
+
+}
