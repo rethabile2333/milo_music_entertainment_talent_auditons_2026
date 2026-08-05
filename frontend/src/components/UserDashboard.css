@@ -305,24 +305,64 @@
 
 
 
-/* ===========================
-   Tablet
-=========================== */
+/* ===================================
+   UNIVERSAL RESPONSIVE FIXES
+=================================== */
+
+* {
+    box-sizing: border-box;
+}
 
 
-@media(max-width:900px){
+.dashboard-page {
+    width:100%;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+
+/* ===================================
+   Large Screens
+=================================== */
+
+@media (min-width:1200px){
+
+    .dashboard-content,
+    .results-section,
+    .audition-card {
+
+        max-width:1100px;
+
+    }
+
+}
+
+
+
+/* ===================================
+   Tablets and Small Laptops
+=================================== */
+
+@media (max-width:1024px){
 
 
 .header {
 
-  padding:15px 4%;
+    padding:15px 4%;
+
+}
+
+
+.site-title {
+
+    font-size:24px;
 
 }
 
 
 .nav {
 
-  gap:10px;
+    gap:12px;
 
 }
 
@@ -331,7 +371,23 @@
 .results-section,
 .audition-card {
 
-  width:92%;
+    width:92%;
+
+    padding:22px;
+
+}
+
+
+.audition-info {
+
+    grid-template-columns:1fr 1fr;
+
+}
+
+
+.info-row {
+
+    padding:14px;
 
 }
 
@@ -340,48 +396,67 @@
 
 
 
-/* ===========================
-   Mobile
-=========================== */
+/* ===================================
+   Mobile Devices
+=================================== */
 
-
-@media(max-width:600px){
+@media (max-width:768px){
 
 
 .header {
 
-  flex-direction:column;
+    flex-direction:column;
 
-  gap:15px;
+    justify-content:center;
 
-  text-align:center;
+    gap:15px;
+
+    text-align:center;
 
 }
 
 
 .logo-area {
 
-  justify-content:center;
+    justify-content:center;
 
 }
+
+
+.site-title {
+
+    font-size:22px;
+
+}
+
 
 
 .nav {
 
-  flex-wrap:wrap;
+    width:100%;
 
-  justify-content:center;
+    justify-content:center;
 
-  width:100%;
+    flex-wrap:wrap;
 
 }
 
 
+
+.nav a,
+.nav-btn {
+
+    font-size:14px;
+
+}
+
+
+
 .logout-btn {
 
-  width:100%;
+    width:90%;
 
-  max-width:250px;
+    max-width:300px;
 
 }
 
@@ -389,9 +464,25 @@
 
 .welcome-section {
 
-  padding:20px;
+    padding:20px 15px;
 
-  text-align:center;
+    text-align:center;
+
+}
+
+
+
+.welcome-section h2 {
+
+    font-size:24px;
+
+}
+
+
+
+.welcome-section p {
+
+    font-size:14px;
 
 }
 
@@ -401,11 +492,13 @@
 .results-section,
 .audition-card {
 
-  width:95%;
+    width:94%;
 
-  padding:20px;
+    padding:18px;
 
-  margin:20px auto;
+    margin:20px auto;
+
+    border-radius:12px;
 
 }
 
@@ -413,7 +506,7 @@
 
 .audition-info {
 
-  grid-template-columns:1fr;
+    grid-template-columns:1fr;
 
 }
 
@@ -421,11 +514,19 @@
 
 .info-row {
 
-  flex-direction:column;
+    flex-direction:column;
 
-  align-items:flex-start;
+    align-items:flex-start;
 
-  gap:8px;
+    gap:8px;
+
+}
+
+
+
+.result-card {
+
+    padding:12px;
 
 }
 
@@ -434,41 +535,174 @@
 
 
 
-/* ===========================
+/* ===================================
    Small Phones
-=========================== */
+=================================== */
+
+@media(max-width:480px){
 
 
-@media(max-width:400px){
+
+.header {
+
+    padding:15px;
+
+}
+
+
+
+.logo {
+
+    width:45px;
+
+    height:45px;
+
+}
+
 
 
 .site-title {
 
-  font-size:20px;
+    font-size:20px;
 
 }
+
+
+
+.nav {
+
+    gap:8px;
+
+}
+
+
+
+.nav a,
+.nav-btn {
+
+    font-size:13px;
+
+}
+
 
 
 .dashboard-content,
 .results-section,
 .audition-card {
 
-  padding:15px;
+    width:96%;
+
+    padding:15px;
 
 }
 
 
-.info-row {
 
-  font-size:14px;
+.dashboard-content h3,
+.audition-card h2 {
+
+    font-size:18px;
 
 }
+
+
+
+.dashboard-content p,
+.dashboard-content li {
+
+    font-size:14px;
+
+}
+
+
+
+.info-row span,
+.info-row strong {
+
+    font-size:14px;
+
+}
+
 
 
 .logout-btn {
 
-  font-size:14px;
+    padding:10px;
+
+    font-size:14px;
 
 }
+
+
+}
+
+
+
+/* ===================================
+   Very Small Phones (320px)
+=================================== */
+
+@media(max-width:360px){
+
+
+.site-title {
+
+    font-size:18px;
+
+}
+
+
+
+.nav {
+
+    flex-direction:column;
+
+}
+
+
+
+.nav a,
+.nav-btn {
+
+    width:100%;
+
+}
+
+
+
+.dashboard-content,
+.results-section,
+.audition-card {
+
+    width:98%;
+
+    padding:12px;
+
+}
+
+
+
+.welcome-section h2 {
+
+    font-size:21px;
+
+}
+
+
+
+.info-row {
+
+    padding:12px;
+
+}
+
+
+
+.logout-btn {
+
+    width:100%;
+
+}
+
 
 }

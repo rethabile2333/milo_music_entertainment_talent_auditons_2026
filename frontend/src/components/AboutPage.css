@@ -82,71 +82,326 @@
   letter-spacing: 1px;
 }
 
-/* ===========================
-   Responsive Design
-=========================== */
+/* ===================================
+   PERFECT RESPONSIVE DESIGN
+=================================== */
 
-@media (max-width: 768px) {
-
-  .about-page {
-    padding: 10px;
-  }
-
-  .about-content {
-    width: 100%;
-    max-width: 100%;
-    padding: 20px;
-    margin: 20px auto;
-  }
-
-  .about-content h2 {
-    font-size: 28px;
-    display: block;
-    text-align: center;
-  }
-
-  .about-content h3 {
-    font-size: 20px;
-  }
-
-  .about-content p,
-  .about-content li {
-    font-size: 15px;
-    line-height: 1.6;
-  }
-
-  .about-content ul {
-    padding-left: 20px;
-  }
-
-  .about-banner {
-    font-size: 18px;
-    padding: 15px;
-  }
+* {
+    box-sizing:border-box;
 }
 
-@media (max-width: 480px) {
 
-  .about-content {
-    padding: 15px;
-    border-radius: 8px;
-  }
+.about-page {
 
-  .about-content h2 {
-    font-size: 24px;
-  }
+    width:100%;
+    min-height:100vh;
+    overflow-x:hidden;
 
-  .about-content h3 {
-    font-size: 18px;
-  }
+}
 
-  .about-content p,
-  .about-content li {
-    font-size: 14px;
-  }
 
-  .about-banner {
-    font-size: 16px;
-    padding: 12px;
-  }
+
+/* ===================================
+   Large Screens
+=================================== */
+
+@media(min-width:1200px){
+
+
+.about-content {
+
+    max-width:1100px;
+
+    padding:50px;
+
+}
+
+
+.about-content h2 {
+
+    font-size:40px;
+
+}
+
+
+}
+
+
+
+/* ===================================
+   Tablets and Small Laptops
+=================================== */
+
+@media(max-width:1024px){
+
+
+.about-page {
+
+    padding:15px;
+
+}
+
+
+.about-content {
+
+    width:95%;
+
+    padding:35px;
+
+    margin:30px auto;
+
+}
+
+
+.about-content h2 {
+
+    font-size:32px;
+
+}
+
+
+
+.about-content h3 {
+
+    font-size:21px;
+
+}
+
+
+
+.about-content p,
+.about-content li {
+
+    font-size:15px;
+
+}
+
+
+}
+
+
+
+/* ===================================
+   Mobile Devices
+=================================== */
+
+@media(max-width:768px){
+
+
+.about-page {
+
+    padding:10px;
+
+}
+
+
+
+.about-content {
+
+    width:100%;
+
+    padding:25px 20px;
+
+    margin:20px auto;
+
+    border-radius:10px;
+
+}
+
+
+
+.about-content h2 {
+
+    font-size:28px;
+
+    line-height:1.3;
+
+    display:block;
+
+}
+
+
+
+.about-content h3 {
+
+    font-size:20px;
+
+    margin-top:25px;
+
+}
+
+
+
+.about-content p {
+
+    font-size:15px;
+
+    line-height:1.6;
+
+}
+
+
+
+.about-content li {
+
+    font-size:15px;
+
+}
+
+
+
+.about-content ul {
+
+    padding-left:20px;
+
+}
+
+
+
+.about-banner {
+
+    font-size:18px;
+
+    padding:18px;
+
+}
+
+
+
+}
+
+
+
+/* ===================================
+   Small Phones
+=================================== */
+
+@media(max-width:480px){
+
+
+.about-page {
+
+    padding:8px;
+
+}
+
+
+
+.about-content {
+
+    padding:18px 15px;
+
+    border-radius:8px;
+
+}
+
+
+
+.about-content h2 {
+
+    font-size:24px;
+
+}
+
+
+
+.about-content h3 {
+
+    font-size:18px;
+
+}
+
+
+
+.about-content p,
+.about-content li {
+
+    font-size:14px;
+
+    line-height:1.5;
+
+}
+
+
+
+.about-content ul {
+
+    padding-left:18px;
+
+}
+
+
+
+.about-banner {
+
+    font-size:15px;
+
+    padding:12px;
+
+    border-radius:6px;
+
+}
+
+
+
+}
+
+
+
+/* ===================================
+   Very Small Phones (320px)
+=================================== */
+
+@media(max-width:360px){
+
+
+.about-page {
+
+    padding:5px;
+
+}
+
+
+
+.about-content {
+
+    padding:15px 12px;
+
+}
+
+
+
+.about-content h2 {
+
+    font-size:21px;
+
+}
+
+
+
+.about-content h3 {
+
+    font-size:17px;
+
+}
+
+
+
+.about-content p,
+.about-content li {
+
+    font-size:13px;
+
+}
+
+
+
+.about-banner {
+
+    font-size:14px;
+
+}
+
+
+
 }
