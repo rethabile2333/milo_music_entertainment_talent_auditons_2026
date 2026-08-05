@@ -50,7 +50,8 @@ export default function AboutPage() {
         <h3>Registration</h3>
         <p>
           To register, send a WhatsApp message to <strong>+266 5388 2100 </strong> or <strong>+266 6262 0909 </strong> 
-          with the subject <em>“MILO AUDITION”</em>. Walk-ins are welcome, but registration is preferred.
+          with the subject <em>“MILO AUDITION”</em>. Walk-ins are welcome, but registration is preferred. Also Register
+           on this website to secure your spot.
           If you’re under 18, please bring a parent or guardian.
         </p>
       </section>
