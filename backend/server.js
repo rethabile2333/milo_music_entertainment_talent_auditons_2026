@@ -7,7 +7,13 @@ const userRoutes = require("./routes/user");
 
 const app = express();
 
-app.use(cors({ origin: ["http://localhost:3000", "https://milo-music-entertainment-talent-aud-mu.vercel.app"] }));
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://milo-music-entertainment-talent-aud-mu.vercel.app/"
+  ],
+  credentials: true,
+}));
 app.use(express.json());
 
 app.use("/user", userRoutes);
