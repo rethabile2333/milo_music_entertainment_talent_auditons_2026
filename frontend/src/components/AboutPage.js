@@ -28,7 +28,7 @@ export default function AboutPage() {
         <ul>
           <li><strong>Date:</strong> 08th August 2026</li>
           <li><strong>Venue:</strong> Global Guesthouse</li>
-          <li><strong>Time:</strong> 8:00 AM – 5:00 PM</li>
+          <li><strong>Time:</strong> 11:00 AM – 2:00 PM</li>
         </ul>
 
         <h3>Why Audition?</h3>

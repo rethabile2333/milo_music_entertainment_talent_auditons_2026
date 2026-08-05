@@ -79,12 +79,12 @@ const res = await api.get("/user/profile", {
 
           <div className="info-row">
             <span>Time</span>
-            <strong>09:00 AM</strong>
+            <strong>11:00 AM - 2:00 PM</strong>
           </div>
 
           <div className="info-row">
             <span>Reporting Time</span>
-            <strong>08:30 AM</strong>
+            <strong>10:30 AM</strong>
           </div>
 
           <div className="info-row">
