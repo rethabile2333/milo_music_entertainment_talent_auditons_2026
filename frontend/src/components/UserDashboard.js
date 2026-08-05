@@ -13,11 +13,11 @@ export default function UserDashboard() {
 
       const token = localStorage.getItem("token");
 
-      const res = await api.get("/user/profile", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+const res = await api.get("/user/profile", {
+    headers:{
+        Authorization:`Bearer ${token}`
+    }
+});
 
       console.log(res.data);
 
