@@ -1,10 +1,9 @@
 import axios from "axios";
 
+import axios from "axios";
+
 const api = axios.create({
-  baseURL: "milo-music-entertainment-talent-aud-alpha.vercel.app",
-  headers: {
-    "Content-Type": "application/json",
-  },
+  baseURL: "https://milo-music-entertainment-talent-auditons.onrender.com",
 });
 
 export default api;
