@@ -11,7 +11,7 @@ const app = express();
 
 app.use(cors({
   origin: [
-    "https://milo-music-entertainment-talent-aud-mu.vercel.app/"
+    "https://milo-music-entertainment-talent-aud-mu.vercel.app"
   ],
   credentials: true,
 }));
