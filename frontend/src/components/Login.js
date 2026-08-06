@@ -17,8 +17,7 @@ export default function Login() {
     try {
       const res = await api.post("/auth/login", form);
 
-      console.log("Login Response:", res.data);
-
+     console.log("Login Response:", JSON.stringify(res.data, null, 2));
       // Save JWT token
       localStorage.setItem("token", res.data.token);
 
