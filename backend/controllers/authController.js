@@ -47,17 +47,20 @@ exports.login = async (req, res) => {
       });
     }
 
-    const token = jwt.sign(
-      {
-        id: account.user_id,
-        role,
-        judge_category: account.judge_category || null,
-      },
-      "secretkey",
-      {
-        expiresIn: "1h",
-      }
-    );
+    
+console.log("LOGIN ACCOUNT:", account);
+
+const payload = {
+    id: account.user_id,
+    role,
+    judge_category: account.judge_category || null,
+};
+
+console.log("JWT PAYLOAD:", payload);
+
+const token = jwt.sign(payload, "secretkey", {
+    expiresIn: "1h",
+});
 
     res.json({
       token,
