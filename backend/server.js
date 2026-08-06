@@ -6,6 +6,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const db = require("./config/db");
 const userRoutes = require("./routes/user");
+const judgeRoutes = require("./routes/judge");
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 
 // ================= ROUTES =================
 app.use("/user", userRoutes);
+app.use("/judge", judgeRoutes);
 
 // ================= REGISTER =================
 app.post("/auth/register", async (req, res) => {
@@ -186,3 +188,4 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+

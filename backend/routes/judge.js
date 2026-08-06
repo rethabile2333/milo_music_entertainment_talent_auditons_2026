@@ -1,30 +1,97 @@
 const express = require("express");
 const router = express.Router();
+const db = require("../config/db");
+const { verifyToken } = require("../middleware/auth");
 
-const verifyToken = require("../middleware/auth");
 
-const {
+router.get("/dashboard", verifyToken, async (req, res) => {
 
-    dashboard,
+    try {
 
-    contestants,
+        const judgeId = req.user.id;
 
-    evaluate,
+        const [judge] = await db.promise().query(
 
-    saveEvaluation,
+            "SELECT * FROM judges WHERE user_id=?",
 
-    results
+            [judgeId]
 
-} = require("../controllers/judgeController");
+        );
 
-router.get("/dashboard",verifyToken,dashboard);
+        if (judge.length === 0) {
 
-router.get("/contestants",verifyToken,contestants);
+            return res.status(404).json({
 
-router.get("/evaluate/:id",verifyToken,evaluate);
+                error: "Judge not found"
 
-router.post("/evaluate",verifyToken,saveEvaluation);
+            });
 
-router.get("/results",verifyToken,results);
+        }
+
+        const category = judge[0].judge_category;
+
+        const [contestants] = await db.promise().query(
+
+            `
+            SELECT
+            user_id,
+            full_name,
+            role
+            FROM users
+            WHERE role=?
+            `,
+
+            [category]
+
+        );
+
+        const [completed] = await db.promise().query(
+
+            `
+            SELECT COUNT(*) completed
+
+            FROM reviews
+
+            WHERE judge_id=?
+
+            AND status='Completed'
+            `,
+
+            [judgeId]
+
+        );
+
+        res.json({
+
+            profile: judge[0],
+
+            stats: {
+
+                assigned: contestants.length,
+
+                pending:
+                    contestants.length -
+                    completed[0].completed,
+
+                completed:
+                    completed[0].completed
+
+            },
+
+            contestants
+
+        });
+
+    }
+
+    catch(err){
+
+        console.log(err);
+
+        res.status(500).json(err);
+
+    }
+
+});
 
 module.exports=router;

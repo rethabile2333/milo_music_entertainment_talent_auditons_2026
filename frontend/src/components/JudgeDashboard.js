@@ -4,6 +4,7 @@ import api from "../services/api";
 import "./JudgeDashboard.css";
 
 export default function JudgeDashboard() {
+
     const navigate = useNavigate();
 
     const [profile, setProfile] = useState({});
@@ -20,6 +21,7 @@ export default function JudgeDashboard() {
     }, []);
 
     const loadDashboard = async () => {
+
         try {
 
             const token = localStorage.getItem("token");
@@ -32,16 +34,62 @@ export default function JudgeDashboard() {
 
             setProfile(res.data.profile);
             setStats(res.data.stats);
-            setContestants(res.data.contestants);
+
+            // Add score and feedback fields
+            const data = res.data.contestants.map(c => ({
+                ...c,
+                score: "",
+                feedback: ""
+            }));
+
+            setContestants(data);
 
         } catch (err) {
             console.error(err);
         }
+
+    };
+
+    const submitReview = async (contestant) => {
+
+        try {
+
+            const token = localStorage.getItem("token");
+
+            await api.post(
+                "/judge/review",
+                {
+                    contestant_id: contestant.user_id,
+                    score: contestant.score,
+                    feedback: contestant.feedback
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
+
+            alert("Evaluation submitted successfully.");
+
+            loadDashboard();
+
+        } catch (err) {
+
+            console.error(err);
+
+            alert("Unable to submit evaluation.");
+
+        }
+
     };
 
     const logout = () => {
+
         localStorage.removeItem("token");
+
         navigate("/login");
+
     };
 
     return (
@@ -74,27 +122,6 @@ export default function JudgeDashboard() {
                     </button>
 
                     <button
-                        className="nav-btn"
-                        onClick={() => navigate("/judge/contestants")}
-                    >
-                        Contestants
-                    </button>
-
-                    <button
-                        className="nav-btn"
-                        onClick={() => navigate("/judge/results")}
-                    >
-                        Results
-                    </button>
-
-                    <button
-                        className="nav-btn"
-                        onClick={() => navigate("/judge/profile")}
-                    >
-                        Profile
-                    </button>
-
-                    <button
                         className="logout-btn"
                         onClick={logout}
                     >
@@ -108,7 +135,7 @@ export default function JudgeDashboard() {
             <section className="welcome">
 
                 <h2>
-                    Welcome, {profile.full_name} 
+                    Welcome, {profile.full_name}
                 </h2>
 
                 <p>
@@ -159,8 +186,9 @@ export default function JudgeDashboard() {
 
                                 <th>Name</th>
                                 <th>Category</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>Score</th>
+                                <th>Feedback</th>
+                                <th>Submit</th>
 
                             </tr>
 
@@ -168,27 +196,73 @@ export default function JudgeDashboard() {
 
                         <tbody>
 
-                            {contestants.map(c => (
+                            {contestants.map((c) => (
 
-                                <tr key={c.application_id}>
+                                <tr key={c.user_id}>
 
                                     <td>{c.full_name}</td>
 
-                                    <td>{c.category}</td>
+                                    <td>{c.role}</td>
 
-                                    <td>{c.status}</td>
+                                    <td>
+
+                                        <input
+                                            type="number"
+                                            min="0"
+                                            max="100"
+                                            value={c.score}
+                                            onChange={(e) => {
+
+                                                const value = e.target.value;
+
+                                                setContestants(prev =>
+                                                    prev.map(item =>
+                                                        item.user_id === c.user_id
+                                                            ? {
+                                                                ...item,
+                                                                score: value
+                                                            }
+                                                            : item
+                                                    )
+                                                );
+
+                                            }}
+                                        />
+
+                                    </td>
+
+                                    <td>
+
+                                        <textarea
+                                            rows="3"
+                                            value={c.feedback}
+                                            onChange={(e) => {
+
+                                                const value = e.target.value;
+
+                                                setContestants(prev =>
+                                                    prev.map(item =>
+                                                        item.user_id === c.user_id
+                                                            ? {
+                                                                ...item,
+                                                                feedback: value
+                                                            }
+                                                            : item
+                                                    )
+                                                );
+
+                                            }}
+                                        />
+
+                                    </td>
 
                                     <td>
 
                                         <button
                                             className="evaluate-btn"
-                                            onClick={() =>
-                                                navigate(
-                                                    `/judge/evaluate/${c.application_id}`
-                                                )
-                                            }
+                                            onClick={() => submitReview(c)}
                                         >
-                                            Evaluate
+                                            Submit
                                         </button>
 
                                     </td>
@@ -209,13 +283,13 @@ export default function JudgeDashboard() {
 
                     <ul>
 
-                        <li>Review assigned contestants</li>
+                        <li>Review assigned contestants.</li>
 
-                        <li>Submit scores</li>
+                        <li>Enter a score out of 100.</li>
 
-                        <li>Leave feedback</li>
+                        <li>Provide written feedback.</li>
 
-                        <li>Complete pending evaluations</li>
+                        <li>Submit completed evaluations.</li>
 
                     </ul>
 
