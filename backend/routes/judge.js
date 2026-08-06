@@ -5,10 +5,11 @@ const { verifyToken } = require("../middleware/auth");
 
 
 router.get("/dashboard", verifyToken, async (req, res) => {
-
+  console.log("Decoded user:", req.user);
     try {
 
         const judgeId = req.user.id;
+         console.log("Judge ID:", judgeId);
 
         const [judge] = await db.promise().query(
 
@@ -52,7 +53,7 @@ router.get("/dashboard", verifyToken, async (req, res) => {
 
             FROM reviews
 
-            WHERE judge_id=?
+            WHERE user_id=?
 
             AND status='Completed'
             `,
@@ -93,5 +94,7 @@ router.get("/dashboard", verifyToken, async (req, res) => {
     }
 
 });
+
+
 
 module.exports=router;
