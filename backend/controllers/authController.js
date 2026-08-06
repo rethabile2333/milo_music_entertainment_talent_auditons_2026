@@ -6,29 +6,29 @@ exports.login = async (req, res) => {
   const { email, password } = req.body;
 
   try {
+    let rows;
+    let account;
+    let role;
 
-    // Look in users table first
-    let [rows] = await db.query(
+    // Check users table
+    [rows] = await db.query(
       "SELECT * FROM users WHERE email = ?",
       [email]
     );
-
-    let account;
-    let role;
 
     if (rows.length > 0) {
       account = rows[0];
       role = account.role;
     } else {
-      // If not found, look in judges table
+      // Check judges table
       [rows] = await db.query(
         "SELECT * FROM judges WHERE email = ?",
         [email]
       );
 
       if (rows.length === 0) {
-        return res.status(400).json({
-          error: "User not found",
+        return res.status(404).json({
+          error: "User not found"
         });
       }
 
@@ -43,36 +43,44 @@ exports.login = async (req, res) => {
 
     if (!valid) {
       return res.status(400).json({
-        error: "Invalid password",
+        error: "Invalid password"
       });
     }
 
-    
-console.log("LOGIN ACCOUNT:", account);
+    console.log("LOGIN ACCOUNT:", account);
 
-const payload = {
-    id: account.user_id,
-    role,
-    judge_category: account.judge_category || null,
-};
+    const payload = {
+      id: account.user_id,
+      role: role,
+      judge_category: account.judge_category || null
+    };
 
-console.log("JWT PAYLOAD:", payload);
+    console.log("JWT PAYLOAD:", payload);
 
-const token = jwt.sign(payload, "secretkey", {
-    expiresIn: "1h",
-});
+    const token = jwt.sign(
+      payload,
+      process.env.JWT_SECRET || "secretkey",
+      {
+        expiresIn: "1h"
+      }
+    );
 
     res.json({
       token,
       user: {
-        ...account,
-        role,
-      },
+        user_id: account.user_id,
+        full_name: account.full_name,
+        email: account.email,
+        role: role,
+        judge_category: account.judge_category || null
+      }
     });
 
   } catch (err) {
+    console.error(err);
+
     res.status(500).json({
-      error: err.message,
+      error: err.message
     });
   }
 };
