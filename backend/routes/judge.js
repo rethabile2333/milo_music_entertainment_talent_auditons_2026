@@ -85,13 +85,14 @@ router.get("/dashboard", verifyToken, async (req, res) => {
 
     }
 
-    catch(err){
+    catch (err) {
+    console.error("Dashboard Error:", err);
 
-        console.log(err);
-
-        res.status(500).json(err);
-
-    }
+    res.status(500).json({
+        error: err.message,
+        stack: err.stack
+    });
+}
 
 });
 
