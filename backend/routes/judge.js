@@ -131,7 +131,7 @@ router.post("/review", verifyToken, async (req, res) => {
         (
           judge_id,
           contestant_id,
-          score,
+          overall_score,
           feedback,
           status
         )
