@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import { useNavigate } from "react-router-dom";
@@ -22,10 +23,12 @@ export default function FeedbackPage() {
                     }
                 });
 
-                setFeedback(res.data.feedback);
+                setFeedback(res.data.feedback || []);
 
             } catch (err) {
-                console.error(err);
+
+                console.error("Feedback loading error:", err);
+
             }
 
         };
@@ -34,6 +37,7 @@ export default function FeedbackPage() {
 
     }, []);
 
+
     return (
 
         <div className="feedback-page">
@@ -41,20 +45,40 @@ export default function FeedbackPage() {
             <header className="header">
 
                 <div className="logo-area">
-                    <img src="/logo.jpeg" alt="Logo" className="logo" />
-                    <h1 className="site-title">Talent Auditions</h1>
+                    <img 
+                        src="/logo.jpeg" 
+                        alt="Logo" 
+                        className="logo" 
+                    />
+
+                    <h1 className="site-title">
+                        Talent Auditions
+                    </h1>
                 </div>
 
+
                 <nav className="nav">
-                    <a href="/profilepage">My Profile</a>
-                    <a href="/results">Results</a>
-                    <a href="/feedback">Feedback</a>
+
+                    <a href="/profilepage">
+                        My Profile
+                    </a>
+
+                    <a href="/results">
+                        Results
+                    </a>
+
+                    <a href="/feedback">
+                        Feedback
+                    </a>
+
 
                     <button
                         className="logout-btn"
                         onClick={() => {
+
                             localStorage.removeItem("token");
                             navigate("/login");
+
                         }}
                     >
                         Logout
@@ -64,35 +88,74 @@ export default function FeedbackPage() {
 
             </header>
 
+
+
             <div className="page-container">
 
-                <h2>Judge Feedback</h2>
+                <h2>
+                    Judge Feedback
+                </h2>
+
+
 
                 {feedback.length === 0 ? (
 
-                    <p>No feedback available.</p>
+                    <p>
+                        No feedback available yet.
+                    </p>
 
                 ) : (
 
-                    feedback.map(item => (
+                    feedback.map((item, index) => (
 
-                        <div className="feedback-card" key={item.id}>
+                        <div 
+                            className="feedback-card" 
+                            key={index}
+                        >
 
-                            <h3>{item.performance_title}</h3>
+                            <h3>
+                                Audition Review
+                            </h3>
 
-                            <p>
-                                <strong>Judge:</strong> {item.judge_name}
-                            </p>
-
-                            <p>
-                                <strong>Score:</strong> {item.score}/100
-                            </p>
 
                             <p>
-                                <strong>Comments:</strong>
+                                <strong>
+                                    Judge:
+                                </strong> 
+                                {" "}
+                                {item.judge_name}
                             </p>
 
-                            <p>{item.feedback}</p>
+
+                            <p>
+                                <strong>
+                                    Score:
+                                </strong>
+                                {" "}
+                                {item.overall_score}/100
+                            </p>
+
+
+                            <p>
+                                <strong>
+                                    Status:
+                                </strong>
+                                {" "}
+                                {item.status}
+                            </p>
+
+
+                            <p>
+                                <strong>
+                                    Comments:
+                                </strong>
+                            </p>
+
+
+                            <p>
+                                {item.feedback}
+                            </p>
+
 
                         </div>
 
@@ -100,10 +163,13 @@ export default function FeedbackPage() {
 
                 )}
 
+
             </div>
+
 
         </div>
 
     );
 
 }
+
