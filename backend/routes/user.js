@@ -129,7 +129,7 @@ router.get("/results", verifyToken, async (req, res) => {
             r.evaluated_at,
             u.full_name AS judge_name
         FROM reviews r
-        JOIN users u 
+        JOIN judges u 
             ON r.judge_id = u.user_id
         WHERE r.contestant_id = ?
         `,
