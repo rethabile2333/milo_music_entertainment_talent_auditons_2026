@@ -47,6 +47,7 @@ router.get("/dashboard", verifyToken, async (req, res) => {
       SELECT COUNT(*) AS completed
       FROM reviews
       WHERE judge_id = ?
+      AND status = 'Completed'
       `,
       [judgeId]
     );
@@ -74,6 +75,91 @@ router.get("/dashboard", verifyToken, async (req, res) => {
       sqlMessage: err.sqlMessage,
       sql: err.sql,
       stack: err.stack
+    });
+
+  }
+});
+
+router.post("/review", verifyToken, async (req, res) => {
+  try {
+
+    const judgeId = req.user.id;
+    const { contestant_id, score, feedback } = req.body;
+
+    if (!contestant_id || score === "" || score == null) {
+      return res.status(400).json({
+        error: "Contestant and score are required."
+      });
+    }
+
+    const [existing] = await db.query(
+      `
+      SELECT *
+      FROM reviews
+      WHERE judge_id = ?
+      AND contestant_id = ?
+      `,
+      [judgeId, contestant_id]
+    );
+
+    if (existing.length > 0) {
+
+      await db.query(
+        `
+        UPDATE reviews
+        SET
+          score = ?,
+          feedback = ?,
+          status = 'Completed'
+        WHERE
+          judge_id = ?
+        AND contestant_id = ?
+        `,
+        [
+          score,
+          feedback,
+          judgeId,
+          contestant_id
+        ]
+      );
+
+    } else {
+
+      await db.query(
+        `
+        INSERT INTO reviews
+        (
+          judge_id,
+          contestant_id,
+          score,
+          feedback,
+          status
+        )
+        VALUES (?, ?, ?, ?, ?)
+        `,
+        [
+          judgeId,
+          contestant_id,
+          score,
+          feedback,
+          "Completed"
+        ]
+      );
+
+    }
+
+    res.json({
+      message: "Review submitted successfully."
+    });
+
+  } catch (err) {
+
+    console.error("REVIEW ERROR:", err);
+
+    res.status(500).json({
+      error: err.message,
+      sqlMessage: err.sqlMessage,
+      code: err.code
     });
 
   }
