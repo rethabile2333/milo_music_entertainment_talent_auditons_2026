@@ -215,8 +215,8 @@ export default function ResultsPage() {
 
 
                                     <td>
-                                        {result.created_at
-                                        ? new Date(result.created_at)
+                                        {result.evaluated_at
+                                        ? new Date(result.evaluated_at)
                                             .toLocaleDateString()
                                         : "-"
                                         }
