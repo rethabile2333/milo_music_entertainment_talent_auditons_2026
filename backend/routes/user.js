@@ -126,7 +126,7 @@ router.get("/results", verifyToken, async (req, res) => {
         SELECT 
             r.overall_score,
             r.status,
-            r.created_at,
+            r.evaluated_at,
             u.full_name AS judge_name
         FROM reviews r
         JOIN users u 
