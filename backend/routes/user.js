@@ -89,7 +89,7 @@ router.get("/feedback", verifyToken, async (req,res)=>{
             r.overall_score,
             u.full_name AS judge_name
         FROM reviews r
-        JOIN users u
+        JOIN judges u
         ON r.judge_id = u.user_id
         WHERE r.contestant_id = ?
         `,
