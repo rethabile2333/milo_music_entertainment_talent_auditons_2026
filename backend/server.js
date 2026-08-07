@@ -146,28 +146,28 @@ app.post("/auth/login", async (req, res) => {
       });
     }
 
-    const token = jwt.sign(
-      {
-        id: judge.judge_id,
-        role: "Judge",
-        judge_category: judge.judge_category,
-      },
-      process.env.JWT_SECRET,
-      {
-        expiresIn: "1d",
-      }
-    );
+   const token = jwt.sign(
+  {
+    id: judge.user_id,
+    role: "Judge",
+    judge_category: judge.judge_category,
+  },
+  process.env.JWT_SECRET,
+  {
+    expiresIn: "1d",
+  }
+);
 
-    res.json({
-      token,
-      user: {
-        user_id: judge.judge_id,
-        full_name: judge.full_name,
-        email: judge.email,
-        role: "Judge",
-        judge_category: judge.judge_category,
-      },
-    });
+res.json({
+  token,
+  user: {
+    user_id: judge.user_id,
+    full_name: judge.full_name,
+    email: judge.email,
+    role: "Judge",
+    judge_category: judge.judge_category,
+  },
+});
 
   } catch (err) {
     console.error("LOGIN ERROR:", err);
