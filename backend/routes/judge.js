@@ -47,7 +47,6 @@ router.get("/dashboard", verifyToken, async (req, res) => {
       SELECT COUNT(*) AS completed
       FROM reviews
       WHERE judge_id = ?
-      AND status='Completed'
       `,
       [judgeId]
     );
