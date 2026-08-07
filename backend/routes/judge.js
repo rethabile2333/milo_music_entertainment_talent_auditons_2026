@@ -13,7 +13,7 @@ router.get("/dashboard", verifyToken, async (req, res) => {
     console.log("Judge ID:", judgeId);
 
     // Get judge
-    const [judge] = await db.promise().query(
+    const [judge] = await db.query(
       "SELECT * FROM judges WHERE user_id = ?",
       [judgeId]
     );
@@ -30,7 +30,7 @@ router.get("/dashboard", verifyToken, async (req, res) => {
     console.log("Judge Category:", category);
 
     // Get contestants
-    const [contestants] = await db.promise().query(
+    const [contestants] = await db.query(
       `
       SELECT user_id, full_name, role
       FROM users
@@ -42,7 +42,7 @@ router.get("/dashboard", verifyToken, async (req, res) => {
     console.log("Contestants:", contestants.length);
 
     // Count completed reviews
-    const [completed] = await db.promise().query(
+    const [completed] = await db.query(
       `
       SELECT COUNT(*) AS completed
       FROM reviews
